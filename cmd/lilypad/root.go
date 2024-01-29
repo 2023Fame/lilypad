@@ -2,7 +2,6 @@ package lilypad
 
 import (
 	"context"
-	"fmt"
 	"os"
 
 	"github.com/spf13/cobra"
@@ -10,16 +9,15 @@ import (
 
 var Fatal = FatalErrorHandler
 
-//FIXME: why @Kai?
-//func init() { //nolint:gochecknoinits
-//	NewRootCmd()
-//}
+func init() { //nolint:gochecknoinits
+	NewRootCmd()
+}
 
 func NewRootCmd() *cobra.Command {
 	RootCmd := &cobra.Command{
 		Use:   getCommandLineExecutable(),
 		Short: "Lilypad",
-		Long:  fmt.Sprintf("Lilypad: %s \nCommit: %s \n", VERSION, COMMIT_SHA),
+		Long:  `Lilypad`,
 	}
 	RootCmd.AddCommand(newSolverCmd())
 	RootCmd.AddCommand(newResourceProviderCmd())

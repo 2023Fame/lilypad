@@ -1,6 +1,8 @@
 package main
 
 import (
+	"fmt"
+
 	"github.com/bacalhau-project/lilypad/cmd/lilypad"
 )
 
@@ -9,5 +11,5 @@ func main() {
 }
 
 func init() {
-	//fmt.Printf("Lilypad: %s\n", lilypad.VERSION)
+	fmt.Printf("Lilypad: %s\n", lilypad.VERSION)
 }

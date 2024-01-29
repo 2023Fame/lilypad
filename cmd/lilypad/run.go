@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"os"
 	"os/signal"
-	"strings"
 	"syscall"
 	"time"
 
@@ -42,7 +41,7 @@ func newRunCmd() *cobra.Command {
 
 func runJob(cmd *cobra.Command, options jobcreator.JobCreatorOptions) error {
 	c := color.New(color.FgCyan).Add(color.Bold)
-	header := `
+	c.Print(`
 ⠀⠀⠀⠀⠀⠀⣀⣤⣤⢠⣤⣀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⢴⣿⣿⣿⣿⢸⣿⡟⠀⠀⠀⠀⠀    ██╗     ██╗██╗  ██╗   ██╗██████╗  █████╗ ██████╗ 
 ⠀⠀⣰⣿⣦⡙⢿⣿⣿⢸⡿⠀⠀⠀⠀⢀⠀    ██║     ██║██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
@@ -53,12 +52,7 @@ func runJob(cmd *cobra.Command, options jobcreator.JobCreatorOptions) error {
 ⠀⠀⠀⠉⢾⣿⣿⣿⣿⢸⣿⣿⣿⡷⠈⠀⠀                                                  
 ⠀⠀⠀⠀⠀⠈⠙⠛⠛⠘⠛⠋⠁⠀ ⠀⠀⠀   Decentralized Compute Network  https://lilypad.tech
 
-`
-	if VERSION != "" {
-		header = strings.Replace(header, "v2", VERSION, 1)
-	}
-	c.Print(header)
-
+`)
 	spinner, err := createSpinner("Lilypad submitting job", "🌟")
 	if err != nil {
 		fmt.Printf("failed to make spinner from config struct: %v\n", err)
